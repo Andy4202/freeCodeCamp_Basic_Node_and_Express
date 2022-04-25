@@ -3,7 +3,6 @@ require('dotenv').config()
 var express = require('express');
 var app = express();
 
-
 app.use('/public', express.static(__dirname + '/public'));
 
 app.get("/", function(req, res){
@@ -12,10 +11,12 @@ app.get("/", function(req, res){
 })
 
 app.get("/json", function(req, res){
-    let response = 'Hello json'
+    let response = ''
     if (process.env.MESSAGE_STYLE === 'uppercase'){
-        response = response.toUpperCase()
-    } 
+        response = "Hello json".toUpperCase()
+    } else {
+        response = 'Hello json'
+    }
 
     res.send({
         "message": response
