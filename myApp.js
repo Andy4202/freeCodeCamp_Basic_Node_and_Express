@@ -10,28 +10,28 @@ app.get("/", function(req, res){
     res.sendFile(absolutePath);
 })
 
-app.get("/json", function(req, res, next){
-    
-    // if (process.env.MESSAGE_STYLE === 'uppercase'){
-    //     res.json({
-    //         "message": "HELLO JSON"
-    //     })
-    // } else {
-    //     res.json({
-    //         "message": "Hello json"
-    //     })
-    // }
 
-    // method path - ip
-    // GET /json - 
-
+app.use(function(req, res, next) {
     const output = req.method + ' ' + req.path + ' - ' + req.ip;
 
-    res.send({
-             output
-             })
+    console.log(output);
 
-    next();       
+    next();  
+});
+
+
+app.get("/json", function(req, res, next){
+    
+    if (process.env.MESSAGE_STYLE === 'uppercase'){
+        res.json({
+            "message": "HELLO JSON"
+        })
+    } else {
+        res.json({
+            "message": "Hello json"
+        })
+    }
+ 
 })
 
 
