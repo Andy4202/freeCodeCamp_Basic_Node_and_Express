@@ -10,7 +10,7 @@ app.get("/", function(req, res){
     res.sendFile(absolutePath);
 })
 
-app.get("/json", function(req, res){
+app.get("/json", function(req, res, next){
     
     // if (process.env.MESSAGE_STYLE === 'uppercase'){
     //     res.json({
@@ -31,7 +31,7 @@ app.get("/json", function(req, res){
              output
              })
 
-
+    next();       
 })
 
 
