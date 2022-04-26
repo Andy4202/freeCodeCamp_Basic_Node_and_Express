@@ -4,9 +4,14 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
-
 app.use('/', bodyParser.urlencoded({extended: false}))
 
+app.post('/name', function(req, res){
+    console.log(req.body)
+    res.json({
+        name : `${req.body.first} ${req.body.last}`
+    })
+})
 
 app.use('/public', express.static(__dirname + '/public'));
 
