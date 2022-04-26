@@ -13,11 +13,15 @@ app.get("/", function(req, res){
 
 app.use(function(req, res, next) {
     const output = req.method + ' ' + req.path + ' - ' + req.ip;
-
     console.log(output);
-
     next();  
 });
+
+app.get('/now', function(req, res, next){
+    req.time = Date().toString()
+    res.send(req.time)
+    next();
+})
 
 
 app.get("/json", function(req, res, next){
