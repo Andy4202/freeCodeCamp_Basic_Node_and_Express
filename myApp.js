@@ -10,17 +10,20 @@ app.get("/", function(req, res){
     res.sendFile(absolutePath);
 })
 
-
 app.use(function(req, res, next) {
     const output = req.method + ' ' + req.path + ' - ' + req.ip;
     console.log(output);
     next();  
 });
 
+//chaining function
 app.get('/now', function(req, res, next){
-    req.time = Date().toString()
-    res.send(req.time)
+    req.time = new Date().toString()
     next();
+}, function(req, res){
+    res.send({
+        time :req.time   
+    })
 })
 
 
