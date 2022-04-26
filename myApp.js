@@ -33,9 +33,15 @@ app.get('/:word/echo', function(req, res){
     })
 })
 
+//Get query parameter input from the client
+app.get('/name', function(req, res){
+    console.log(req.query)
+    res.json({
+        name : `${req.query.first} ${req.query.last}`
+    })
+})
 
 app.get("/json", function(req, res, next){
-    
     if (process.env.MESSAGE_STYLE === 'uppercase'){
         res.json({
             "message": "HELLO JSON"
@@ -45,7 +51,6 @@ app.get("/json", function(req, res, next){
             "message": "Hello json"
         })
     }
- 
 })
 
 
